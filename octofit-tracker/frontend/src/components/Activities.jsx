@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
-import { fetchCollection } from '../api.js'
+import { fetchEndpoint } from '../api.js'
+
+const activitiesEndpoint = '/api/activities/'
 
 function Activities() {
   const [activities, setActivities] = useState([])
@@ -8,7 +10,7 @@ function Activities() {
   useEffect(() => {
     let isMounted = true
 
-    fetchCollection('activities')
+    fetchEndpoint(activitiesEndpoint)
       .then((data) => {
         if (isMounted) {
           setActivities(data)

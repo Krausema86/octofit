@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
-import { fetchCollection } from '../api.js'
+import { fetchEndpoint } from '../api.js'
+
+const usersEndpoint = '/api/users/'
 
 function Users() {
   const [users, setUsers] = useState([])
@@ -8,7 +10,7 @@ function Users() {
   useEffect(() => {
     let isMounted = true
 
-    fetchCollection('users')
+    fetchEndpoint(usersEndpoint)
       .then((data) => {
         if (isMounted) {
           setUsers(data)
