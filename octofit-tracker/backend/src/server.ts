@@ -3,9 +3,9 @@ import './config/database.js';
 
 import cors from 'cors';
 import express from 'express';
+import { apiBaseUrl, port } from './config/apiUrl.js';
 import apiRouter from './routes/api.js';
 
-const port = Number(process.env.PORT) || 8000;
 const codespaceName = process.env.CODESPACE_NAME;
 const frontendOrigin = codespaceName
   ? `https://${codespaceName}-5173.app.github.dev`
@@ -18,5 +18,5 @@ app.use(express.json());
 app.use('/api', apiRouter);
 
 app.listen(port, () => {
-  console.log(`OctoFit Tracker API running on port ${port}`);
+  console.log(`OctoFit Tracker API running at ${apiBaseUrl}`);
 });
