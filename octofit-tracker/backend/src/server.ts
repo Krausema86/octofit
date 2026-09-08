@@ -3,10 +3,13 @@ import './config/database.js';
 
 import cors from 'cors';
 import express from 'express';
-import { apiBaseUrl, port } from './config/apiUrl.js';
+import { port } from './config/apiUrl.js';
 import apiRouter from './routes/api.js';
 
 const codespaceName = process.env.CODESPACE_NAME;
+const apiBaseUrl = codespaceName
+  ? `https://${codespaceName}-8000.app.github.dev`
+  : 'http://localhost:8000';
 const frontendOrigin = codespaceName
   ? `https://${codespaceName}-5173.app.github.dev`
   : 'http://localhost:5173';
